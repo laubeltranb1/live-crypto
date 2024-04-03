@@ -15,8 +15,13 @@ export class WebSocketService {
     });
   }
 
-  connectSocket(message: any) {
-    this.webSocket.emit("connect", message);
+  connectSocket() {
+    this.webSocket.emit("connect", {
+      apikey: "c7bf1e64-ab68-48c5-b28f-72541bbb1f02",
+      heartbeat: false,
+      subscribe_data_type: ["trade"],
+      subscribe_filter_asset_id: ["BTC", "ETH"],
+    });
   }
 
   receiveStatus() {
