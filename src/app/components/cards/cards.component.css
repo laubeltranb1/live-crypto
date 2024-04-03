@@ -1,0 +1,24 @@
+.container-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 20px;
+}
+.container-cards .card {
+  background: #cdcaca;
+  padding: 10px 25px;
+  border-radius: 15px;
+}
+
+.container-cards .card .name {
+  font-weight: 600;
+}
+
+.container-cards .card .remove-button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.container-cards .card .remove-button a {
+  cursor: pointer;
+}

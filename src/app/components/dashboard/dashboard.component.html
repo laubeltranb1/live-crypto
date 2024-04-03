@@ -1,0 +1,9 @@
+<div class="header">
+  <app-header></app-header>
+</div>
+<div class="cards">
+  <app-cards
+    [coinsData]="coinsData"
+    (itemSelected)="removeItem($event)"
+  ></app-cards>
+</div>

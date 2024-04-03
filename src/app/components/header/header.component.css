@@ -1,0 +1,14 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: #cdcaca;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+.header .add {
+  position: absolute;
+  right: 25px;
+  cursor: pointer;
+}

@@ -1,0 +1,11 @@
+<div class="container-cards">
+  <div *ngFor="let item of coinsData">
+    <div class="card">
+      <p class="name">{{ item.name }}</p>
+      <p>{{ item.priceUsd }} USD</p>
+      <div class="remove-button">
+        <a (click)="removeItem(item)">Remove</a>
+      </div>
+    </div>
+  </div>
+</div>
