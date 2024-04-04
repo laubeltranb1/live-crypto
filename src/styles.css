@@ -1,1 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background: #171b21;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 500;
+}
+::ng-deep .mat-select-trigger {
+  color: #ffffff !important; /* Text color */
+  background-color: #21242a !important; /* Background color */
+  border-color: #ffffff !important; /* Border color */
+}
+
+::ng-deep .mat-option {
+  color: #ffffff !important; /* Text color */
+  background-color: #21242a !important; /* Background color */
+}
+
+::ng-deep .mat-option:hover {
+  background-color: #333333 !important; /* Hover background color */
+}
+
+::ng-deep .mat-selected {
+  color: #ffffff !important; /* Selected option text color */
+}
+
+::ng-deep .mat-select-arrow {
+  color: #ffffff !important; /* Select arrow color */
+}
+
+.ng-trigger,
+.ng-trigger-transformPanel,
+.ng-tns-c18-1,
+.mat-mdc-select-panel,
+.mdc-menu-surface,
+.mdc-menu-surface--open,
+.mat-primary,
+.ng-star-inserted {
+  background-color: #21242a !important;
+  color: #ffffff !important;
+}
+
+.mdc-list-item__primary-text {
+  color: #ffffff !important;
+}
+
+.mat-mdc-form-field-focus-overlay,
+.ng-tns-c17-0,
+.mat-option {
+  background-color: #21242a !important;
+  color: #ffffff !important;
+}

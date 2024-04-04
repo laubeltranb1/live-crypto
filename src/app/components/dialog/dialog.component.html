@@ -1,0 +1,24 @@
+<div class="dialog-container">
+  <h2 mat-dialog-title class="title">Select Coin to add</h2>
+  <mat-dialog-content class="mat-typography">
+    <mat-form-field appearance="fill">
+      <mat-label>Coin</mat-label>
+      <mat-select
+        [(value)]="selectedCoin"
+        (selectionChange)="onSelectChange($event.value)"
+      >
+        <mat-option *ngFor="let coin of coins" [value]="coin">{{
+          coin.name
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button class="btn btn-primary" (click)="add()">
+      <span class="label"> Ok </span>
+    </button>
+    <button mat-button mat-dialog-close class="btn btn-secondary">
+      Cancel
+    </button>
+  </mat-dialog-actions>
+</div>

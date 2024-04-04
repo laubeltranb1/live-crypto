@@ -2,23 +2,63 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   gap: 20px;
-}
-.container-cards .card {
-  background: #cdcaca;
-  padding: 10px 25px;
-  border-radius: 15px;
+  padding: 20px;
 }
 
-.container-cards .card .name {
-  font-weight: 600;
+.container-cards .card {
+  padding: 10px;
+  background: #21242a;
+  border-radius: 23px;
+  height: 235px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mat-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+}
+
+.header-content {
+  flex-grow: 1;
+}
+
+.container-cards .card .title,
+.container-cards .card .subtitle,
+.container-cards .card .subtitle-symbol {
+  color: #ffffff;
+  text-align: left;
+  font-weight: 500;
+}
+
+.container-cards .card .title {
+  font-size: 18px;
+}
+
+.container-cards .card .subtitle {
+  font-size: 32px;
+}
+
+.container-cards .card .subtitle-symbol {
+  font-size: 14px;
+  color: #b0afb0;
 }
 
 .container-cards .card .remove-button {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  margin-left: 10px;
 }
 
-.container-cards .card .remove-button a {
-  cursor: pointer;
+.icons-percentage {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.icon-indicator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

@@ -1,0 +1,42 @@
+.dialog-container {
+  height: 200px;
+  width: 500px;
+  padding: 10px;
+  background: #21242a;
+}
+
+.title {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #02e919;
+}
+
+.btn {
+  font-size: 16px;
+  font-weight: 500;
+  transition: transform 0.2s;
+}
+
+.btn-primary {
+  border: #02e919 1px solid;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+}
+
+.btn-secondary {
+  background: #02e919;
+  color: #ffffff;
+}
+
+.btn-secondary:hover {
+  transform: scale(1.05);
+}

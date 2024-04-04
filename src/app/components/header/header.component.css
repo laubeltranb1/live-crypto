@@ -1,14 +1,31 @@
 .header {
   display: flex;
   align-items: center;
-  padding: 10px;
-  background: #cdcaca;
-  border-radius: 15px;
-  margin-bottom: 10px;
+  justify-content: space-between;
+  margin-top: 50px;
+  padding: 20px;
+}
+
+.header h1 {
+  color: #ffffff;
+  font-size: 24px;
 }
 
 .header .add {
-  position: absolute;
-  right: 25px;
+  display: flex;
+  align-items: center;
   cursor: pointer;
+  font-size: 16px;
+  color: #02e919;
+  text-align: right;
+  font-weight: 500;
+}
+
+.header .add a {
+  display: flex;
+  align-items: center;
+}
+
+.header .add .label {
+  margin-left: 10px;
 }

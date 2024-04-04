@@ -1,11 +1,46 @@
 <div class="container-cards">
   <div *ngFor="let item of coinsData">
-    <div class="card">
-      <p class="name">{{ item.name }}</p>
-      <p>{{ item.priceUsd }} USD</p>
-      <div class="remove-button">
-        <a (click)="removeItem(item)">Remove</a>
-      </div>
-    </div>
+    <mat-card class="card">
+      <mat-card-header>
+        <div class="header-content">
+          <mat-card-title class="title">
+            {{ item.name }}
+          </mat-card-title>
+          <mat-card-subtitle class="subtitle">
+            ${{ item.priceUsd | number : "1.2-4" }} USD
+          </mat-card-subtitle>
+        </div>
+        <button
+          mat-icon-button
+          color="primary"
+          class="remove-button"
+          (click)="removeItem(item)"
+        >
+          <mat-icon style="color: #02e919">remove_circle_outline</mat-icon>
+        </button>
+      </mat-card-header>
+      <mat-card-actions align="end">
+        <div class="icons-percentage">
+          <div class="symbol">
+            <span class="subtitle-symbol">{{ item.symbol }}</span>
+          </div>
+          <div
+            class="icon-indicator"
+            [style.color]="
+              parseNumber(item.changePercent24Hr) >= 0 ? 'green' : 'red'
+            "
+          >
+            <mat-icon>
+              {{
+                parseNumber(item.changePercent24Hr) >= 0
+                  ? "arrow_upward"
+                  : "arrow_downward"
+              }}
+            </mat-icon>
+            <span> {{ item.changePercent24Hr | number : "1.2-2" }}% </span>
+          </div>
+        </div>
+      </mat-card-actions>
+    </mat-card>
   </div>
 </div>
