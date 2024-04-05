@@ -13,6 +13,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 }
 
 .mat-card-header {
@@ -49,6 +50,7 @@
 
 .container-cards .card .remove-button {
   margin-left: 10px;
+  right: 0;
 }
 
 .icons-percentage {
@@ -61,4 +63,32 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.mat-mdc-card-header {
+  padding: 16px 0 0 16px;
+}
+
+.vertical-border {
+  margin-top: 10px;
+  border-left: 6px solid pink;
+}
+
+.card-0 .vertical-border {
+  border-left-color: #f7931a;
+}
+.card-1 .vertical-border {
+  border-left-color: #7f6ee9;
+}
+.card-2 .vertical-border {
+  border-left-color: #009393;
+}
+.card-3 .vertical-border {
+  border-left-color: #f1b90a;
+}
+.card-4 .vertical-border {
+  border-left-color: #9b45ff;
+}
+.card-5 .vertical-border {
+  border-left-color: #2775ca;
 }

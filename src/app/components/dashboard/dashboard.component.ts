@@ -4,6 +4,8 @@ import { CoinsService } from "src/app/services/coins.service";
 import { WebSocketService } from "src/app/services/web-socket.service";
 import { DialogComponent } from "../dialog/dialog.component";
 import { ApiResponse, Asset, AssetPrice } from "src/app/models/coin.model";
+import { ToastrService } from "ngx-toastr";
+import { ActivatedRoute } from "@angular/router";
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",
@@ -17,12 +19,19 @@ export class DashboardComponent implements OnInit {
     private coinsService: CoinsService,
     public dialog: MatDialog,
     private changeDetectorRef: ChangeDetectorRef,
-    private webSocketService: WebSocketService
-  ) {
+    private webSocketService: WebSocketService,
+    private toastr: ToastrService
+  ) // private route: ActivatedRoute
+  {
     this.LoadCoins();
   }
 
   ngOnInit(): void {
+    // this.route.data.subscribe((data) => {
+    //   this.coinsData = data["coinsData"].data;
+    //   this.additionalCoins = data["coinsData"].data.slice(0, 6);
+    // });
+
     this.listenToWebSocket();
   }
 
@@ -58,9 +67,10 @@ export class DashboardComponent implements OnInit {
         if (!this.coinExist(result)) {
           this.coinsData.push(result);
         } else {
-          alert({
-            title: "The coin already exists",
-          });
+          this.toastr.error(
+            "The coin exists already!  Please select another one.",
+            "Error"
+          );
         }
       }
     });

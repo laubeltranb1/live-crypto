@@ -4,7 +4,7 @@ import {
   NO_ERRORS_SCHEMA,
 } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { RouterModule } from "@angular/router";
+import { RouterModule, Routes } from "@angular/router";
 import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -21,6 +21,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { DialogComponent } from "./components/dialog/dialog.component";
 import { MatIconModule } from "@angular/material/icon";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { ToastNoAnimationModule } from "ngx-toastr";
+import { CoinsService } from "./services/coins.service";
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     DialogComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
@@ -43,8 +46,13 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     BrowserAnimationsModule,
     MatIconModule,
     MatTooltipModule,
+    ToastNoAnimationModule.forRoot({
+      timeOut: 10000,
+      positionClass: "toast-bottom-right",
+      preventDuplicates: true,
+    }),
   ],
-  providers: [],
+  providers: [CoinsService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
 })

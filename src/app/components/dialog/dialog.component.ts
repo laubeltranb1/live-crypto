@@ -8,7 +8,7 @@ import { Asset } from "src/app/models/coin.model";
   styleUrls: ["./dialog.component.css"],
 })
 export class DialogComponent implements OnInit {
-  coins: Asset[] = [];
+  coins: Asset[];
   coinSelected: any;
   selectedCoin = {} as Asset;
 
@@ -16,7 +16,7 @@ export class DialogComponent implements OnInit {
     public dialogRef: MatDialogRef<DialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.coins = data;
+    this.coins = Object.values(this.data);
   }
 
   ngOnInit(): void {
@@ -28,7 +28,6 @@ export class DialogComponent implements OnInit {
   }
 
   add() {
-    console.log("entre al add method");
     this.dialogRef.close(this.coinSelected);
   }
 }

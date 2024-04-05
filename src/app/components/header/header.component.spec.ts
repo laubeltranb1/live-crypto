@@ -21,4 +21,10 @@ describe("HeaderComponent", () => {
   it("should create", () => {
     expect(component).toBeTruthy();
   });
+
+  it("should emit openDialogEmiter event when openDialog is called", () => {
+    spyOn(component.openDialogEmiter, "emit");
+    component.openDialog();
+    expect(component.openDialogEmiter.emit).toHaveBeenCalled();
+  });
 });

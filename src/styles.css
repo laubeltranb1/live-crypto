@@ -11,28 +11,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-weight: 500;
 }
-::ng-deep .mat-select-trigger {
-  color: #ffffff !important; /* Text color */
-  background-color: #21242a !important; /* Background color */
-  border-color: #ffffff !important; /* Border color */
-}
-
-::ng-deep .mat-option {
-  color: #ffffff !important; /* Text color */
-  background-color: #21242a !important; /* Background color */
-}
-
-::ng-deep .mat-option:hover {
-  background-color: #333333 !important; /* Hover background color */
-}
-
-::ng-deep .mat-selected {
-  color: #ffffff !important; /* Selected option text color */
-}
-
-::ng-deep .mat-select-arrow {
-  color: #ffffff !important; /* Select arrow color */
-}
 
 .ng-trigger,
 .ng-trigger-transformPanel,
@@ -55,4 +33,75 @@ body {
 .mat-option {
   background-color: #21242a !important;
   color: #ffffff !important;
+}
+
+ng-trigger,
+.ng-trigger-transformPanel,
+.ng-tns-c18-1,
+.mat-mdc-select-panel,
+.mdc-menu-surface,
+.mdc-menu-surface--open,
+.mat-primary,
+.ng-star-inserted {
+  background-color: transparent !important;
+  color: #ffffff !important;
+}
+.mat-mdc-dialog-container {
+  .mat-mdc-dialog-surface,
+  .mdc-dialog__surface {
+    background-color: #21242a !important;
+    color: #ffffff !important;
+    border-radius: 23px !important;
+  }
+}
+.select-container {
+  .mat-mdc-text-field-wrapper,
+  .mdc-text-field,
+  .ng-tns-c17-0,
+  .mdc-text-field--filled {
+    background: transparent !important;
+    color: #ffffff !important;
+  }
+}
+
+.option-container,
+.mat-mdc-select-panel,
+.mdc-menu-surface,
+.mdc-menu-surface--open,
+.mat-primary {
+  background: #21242a !important;
+  color: #ffffff !important;
+}
+
+.mat-primary .mat-pseudo-checkbox-checked.mat-pseudo-checkbox-minimal::after,
+.mat-primary
+  .mat-pseudo-checkbox-indeterminate.mat-pseudo-checkbox-minimal::after {
+  color: #02e919 !important;
+}
+
+.mat-primary
+  .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled)
+  .mdc-list-item__primary-text {
+  color: #02e919 !important;
+}
+
+.mat-primary
+  .mat-mdc-option:not(.mdc-list-item--selected)
+  .mdc-list-item__primary-text {
+  color: #ffffff !important;
+}
+
+matformfieldlineripple .mdc-line-ripple,
+.ng-tns-c17-2,
+.ng-star-inserted,
+.mdc-line-ripple--active {
+  color: #ffffff !important;
+}
+
+.mat-mdc-form-field.mat-focused.mat-primary .mat-mdc-select-arrow {
+  color: #02e919 !important;
+}
+
+.mdc-text-field--filled .mdc-line-ripple::after {
+  border-bottom-color: #02e919 !important;
 }

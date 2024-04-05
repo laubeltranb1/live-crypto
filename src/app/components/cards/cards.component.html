@@ -1,7 +1,7 @@
 <div class="container-cards">
-  <div *ngFor="let item of coinsData">
+  <div *ngFor="let item of coinsData; let i = index" [ngClass]="'card-' + i">
     <mat-card class="card">
-      <mat-card-header>
+      <mat-card-header class="vertical-border">
         <div class="header-content">
           <mat-card-title class="title">
             {{ item.name }}
