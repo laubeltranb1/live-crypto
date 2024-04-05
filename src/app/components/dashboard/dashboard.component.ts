@@ -14,16 +14,16 @@ import { ActivatedRoute } from "@angular/router";
 export class DashboardComponent implements OnInit {
   additionalCoins: Asset[] = [];
   coinsData: Asset[] = [];
+  loading: boolean = true;
 
   constructor(
     private coinsService: CoinsService,
     public dialog: MatDialog,
     private changeDetectorRef: ChangeDetectorRef,
     private webSocketService: WebSocketService,
-    private toastr: ToastrService
-  ) // private route: ActivatedRoute
-  {
-    this.LoadCoins();
+    private toastr: ToastrService // private route: ActivatedRoute
+  ) {
+    this.loadCoins();
   }
 
   ngOnInit(): void {
@@ -35,11 +35,22 @@ export class DashboardComponent implements OnInit {
     this.listenToWebSocket();
   }
 
-  LoadCoins() {
-    this.coinsService.getAssets().subscribe((resp: ApiResponse) => {
-      this.additionalCoins = resp.data;
-      this.coinsData = resp.data.slice(0, 6);
-    });
+  loadCoins() {
+    this.coinsService.getAssets().subscribe(
+      (resp: ApiResponse) => {
+        this.additionalCoins = resp.data;
+        this.coinsData = resp.data.slice(0, 6);
+        this.loading = false;
+      },
+      (error) => {
+        this.loading = false;
+        console.error("Failed to load coins:", error);
+        this.toastr.error(
+          "Failed to load coins. Please try again later.",
+          "Error"
+        );
+      }
+    );
   }
 
   listenToWebSocket() {

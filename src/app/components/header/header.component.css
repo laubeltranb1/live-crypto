@@ -26,6 +26,11 @@
   align-items: center;
 }
 
+.header .add .disabled {
+  cursor: not-allowed;
+  color: gray;
+}
+
 .header .add .label {
   margin-left: 10px;
 }

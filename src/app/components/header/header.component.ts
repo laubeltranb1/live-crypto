@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { DialogComponent } from "../dialog/dialog.component";
 
@@ -8,7 +8,9 @@ import { DialogComponent } from "../dialog/dialog.component";
   styleUrls: ["./header.component.css"],
 })
 export class HeaderComponent implements OnInit {
+  @Input() loading!: boolean;
   @Output() openDialogEmiter = new EventEmitter();
+
   constructor() {}
 
   ngOnInit(): void {}

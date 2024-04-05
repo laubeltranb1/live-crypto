@@ -3,8 +3,14 @@
     <h1>Live Crypto</h1>
   </div>
   <div class="add">
-    <a (click)="openDialog()">
-      <mat-icon style="color: #02e919">add_circle_outline</mat-icon>
+    <a
+      (click)="openDialog()"
+      [class.disabled]="loading"
+      [style.pointer-events]="loading ? 'none' : 'auto'"
+    >
+      <mat-icon [style.color]="loading ? '#808080' : '#02e919'"
+        >add_circle_outline</mat-icon
+      >
       <span class="label"> Add Crypto </span></a
     >
   </div>

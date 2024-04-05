@@ -1,0 +1,19 @@
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  overflow: hidden;
+}
+
+.mat-mdc-progress-spinner {
+  --mdc-circular-progress-active-indicator-color: #02e919 !important;
+}
+
+.option-container,
+.mat-mdc-select-panel,
+.mdc-menu-surface,
+.mdc-menu-surface--open,
+.mat-primary {
+  background: transparent !important;
+}

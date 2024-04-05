@@ -20,9 +20,11 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { DialogComponent } from "./components/dialog/dialog.component";
 import { MatIconModule } from "@angular/material/icon";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { ToastNoAnimationModule } from "ngx-toastr";
 import { CoinsService } from "./services/coins.service";
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { CoinsService } from "./services/coins.service";
     CardsComponent,
     HeaderComponent,
     DialogComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -45,6 +48,7 @@ import { CoinsService } from "./services/coins.service";
     MatFormFieldModule,
     BrowserAnimationsModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     MatTooltipModule,
     ToastNoAnimationModule.forRoot({
       timeOut: 10000,

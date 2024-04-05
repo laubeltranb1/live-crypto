@@ -4,14 +4,14 @@ Dashboard for showing main crypto currencies rate 🪙💸
 
 ## Table of Contents 𝌞
 
-- [Installation](#installation)
-- [Technologies](#technologies)
-- [Development](#development)
-  - [Development server](#development-server)
-  - [Build](#build)
-- [Testing](#testing)
-- [Final Result](#final-result)
-- [License](#license)
+- [Installation](#installation-)
+- [Technologies](#technologies-)
+- [Development](#development-)
+  - [Development server](#development-server-)
+  - [Build](#build-)
+- [Testing](#testing-)
+- [Final Result](#final-result-)
+- [License](#license-)
 
 ## Installation 💾
 
@@ -67,4 +67,3 @@ Set to 75% - in karma.config.js
 
 ## License 🪪
 
-MIT
