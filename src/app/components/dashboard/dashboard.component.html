@@ -3,9 +3,14 @@
 </div>
 <div class="cards">
   <app-loader *ngIf="loading"></app-loader>
-  <app-cards
-    *ngIf="!loading"
-    [coinsData]="coinsData"
-    (itemSelected)="removeItem($event)"
-  ></app-cards>
+  <div *ngIf="showNoData; else existingContent">
+    <p>No data available</p>
+  </div>
+  <ng-template #existingContent>
+    <app-cards
+      *ngIf="!loading && !showNoData"
+      [coinsData]="coinsData"
+      (itemSelected)="removeItem($event)"
+    ></app-cards>
+  </ng-template>
 </div>

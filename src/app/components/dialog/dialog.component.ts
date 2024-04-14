@@ -20,6 +20,15 @@ export class DialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const dashboardCoins = JSON.parse(
+      localStorage.getItem("dashboardCoins") || "[]"
+    );
+    this.coins = this.coins.filter(
+      (coin) =>
+        !dashboardCoins.some(
+          (dashboardCoin: Asset) => dashboardCoin.id === coin.id
+        )
+    );
     this.selectedCoin = this.coins[0];
   }
 

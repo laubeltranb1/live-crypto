@@ -9,17 +9,17 @@ const ws_url = environment.ws_url;
   providedIn: "root",
 })
 export class WebSocketService {
-  private socket$: WebSocketSubject<AssetPrice>;
+  private socket: WebSocketSubject<AssetPrice>;
   constructor() {
-    this.socket$ = new WebSocketSubject<AssetPrice>(
+    this.socket = new WebSocketSubject<AssetPrice>(
       `${ws_url}/prices?assets=ALL`
     );
   }
   getWebSocket() {
-    return this.socket$;
+    return this.socket;
   }
 
   ngOnDestroy(): void {
-    this.socket$.complete();
+    this.socket.complete();
   }
 }

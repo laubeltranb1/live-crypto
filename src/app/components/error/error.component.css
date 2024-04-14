@@ -1,0 +1,29 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  overflow: hidden;
+}
+
+.error mat-icon {
+  transform: scale(3);
+  color: #ffd700;
+  animation: swing 1s ease-in-out infinite alternate;
+}
+
+.error span {
+  font-size: 24px;
+  color: #808080;
+  margin-top: 20px;
+}
+
+@keyframes swing {
+  0% {
+    transform: translateX(-60px);
+  }
+  100% {
+    transform: translateX(60px);
+  }
+}

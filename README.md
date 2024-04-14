@@ -6,6 +6,7 @@ Dashboard for showing main crypto currencies rate 🪙💸
 
 - [Installation](#installation-)
 - [Technologies](#technologies-)
+- [API Usage](#api-usage-)
 - [Development](#development-)
   - [Development server](#development-server-)
   - [Build](#build-)
@@ -33,6 +34,13 @@ Dashboard for showing main crypto currencies rate 🪙💸
 - Material v15.2.0
 - NodeJS v20.11.0
 - Socket.IO 4.4.0
+
+## API Usage 📊
+
+- GET - api.coincap.io/v2/assets
+- WEBSOCKET - wss://ws.coincap.io/prices?assets=ALL
+
+**Note:** For futher information about the use of apis, please go to the following link : https://docs.coincap.io/
 
 ## Development 📘
 
@@ -66,4 +74,3 @@ Set to 75% - in karma.config.js
 ![alt text](image.png)
 
 ## License 🪪
-

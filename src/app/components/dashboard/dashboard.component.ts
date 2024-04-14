@@ -5,7 +5,7 @@ import { WebSocketService } from "src/app/services/web-socket.service";
 import { DialogComponent } from "../dialog/dialog.component";
 import { ApiResponse, Asset, AssetPrice } from "src/app/models/coin.model";
 import { ToastrService } from "ngx-toastr";
-import { ActivatedRoute } from "@angular/router";
+import { Router } from "@angular/router";
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",
@@ -15,42 +15,52 @@ export class DashboardComponent implements OnInit {
   additionalCoins: Asset[] = [];
   coinsData: Asset[] = [];
   loading: boolean = true;
+  showNoData: boolean = false;
+  datax: number = 0;
 
   constructor(
     private coinsService: CoinsService,
     public dialog: MatDialog,
     private changeDetectorRef: ChangeDetectorRef,
     private webSocketService: WebSocketService,
-    private toastr: ToastrService // private route: ActivatedRoute
+    private toastr: ToastrService,
+    private router: Router
   ) {
     this.loadCoins();
   }
 
   ngOnInit(): void {
-    // this.route.data.subscribe((data) => {
-    //   this.coinsData = data["coinsData"].data;
-    //   this.additionalCoins = data["coinsData"].data.slice(0, 6);
-    // });
-
     this.listenToWebSocket();
   }
 
+  updateLocalStorage() {
+    localStorage.setItem("dashboardCoins", JSON.stringify(this.coinsData));
+  }
+
   loadCoins() {
-    this.coinsService.getAssets().subscribe(
-      (resp: ApiResponse) => {
+    this.coinsService.getAssets().subscribe({
+      next: (resp: ApiResponse) => {
         this.additionalCoins = resp.data;
-        this.coinsData = resp.data.slice(0, 6);
+
+        if (resp.data.length === 0) {
+          this.showNoData = true;
+          this.router.navigate(["/error"]);
+          return;
+        } else {
+          this.coinsData = resp.data.slice(0, 6);
+          this.updateLocalStorage();
+        }
         this.loading = false;
       },
-      (error) => {
+      error: (error) => {
         this.loading = false;
         console.error("Failed to load coins:", error);
         this.toastr.error(
           "Failed to load coins. Please try again later.",
           "Error"
         );
-      }
-    );
+      },
+    });
   }
 
   listenToWebSocket() {
@@ -77,6 +87,7 @@ export class DashboardComponent implements OnInit {
       if (result) {
         if (!this.coinExist(result)) {
           this.coinsData.push(result);
+          this.updateLocalStorage();
         } else {
           this.toastr.error(
             "The coin exists already!  Please select another one.",
@@ -89,6 +100,7 @@ export class DashboardComponent implements OnInit {
 
   removeItem(event: string) {
     this.coinsData = this.coinsData.filter((coin) => coin.id !== event);
+    this.updateLocalStorage();
   }
   coinExist(coin: Asset) {
     for (var i = 0; i < this.coinsData.length; i++) {

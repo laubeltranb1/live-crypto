@@ -24,7 +24,8 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { ToastNoAnimationModule } from "ngx-toastr";
 import { CoinsService } from "./services/coins.service";
-import { LoaderComponent } from './components/loader/loader.component';
+import { LoaderComponent } from "./components/loader/loader.component";
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { LoaderComponent } from './components/loader/loader.component';
     HeaderComponent,
     DialogComponent,
     LoaderComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserAnimationsModule,
