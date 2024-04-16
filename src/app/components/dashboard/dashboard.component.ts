@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from "@angular/core";
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from "@angular/core";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
 import { CoinsService } from "src/app/services/coins.service";
 import { WebSocketService } from "src/app/services/web-socket.service";
@@ -6,17 +6,18 @@ import { DialogComponent } from "../dialog/dialog.component";
 import { ApiResponse, Asset, AssetPrice } from "src/app/models/coin.model";
 import { ToastrService } from "ngx-toastr";
 import { Router } from "@angular/router";
+import { Subscription } from "rxjs";
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.component.html",
   styleUrls: ["./dashboard.component.css"],
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
   additionalCoins: Asset[] = [];
   coinsData: Asset[] = [];
   loading: boolean = true;
   showNoData: boolean = false;
-  datax: number = 0;
+  private subscriptions: Subscription[] = [];
 
   constructor(
     private coinsService: CoinsService,
@@ -25,11 +26,10 @@ export class DashboardComponent implements OnInit {
     private webSocketService: WebSocketService,
     private toastr: ToastrService,
     private router: Router
-  ) {
-    this.loadCoins();
-  }
+  ) {}
 
   ngOnInit(): void {
+    this.loadCoins();
     this.listenToWebSocket();
   }
 
@@ -46,10 +46,9 @@ export class DashboardComponent implements OnInit {
           this.showNoData = true;
           this.router.navigate(["/error"]);
           return;
-        } else {
-          this.coinsData = resp.data.slice(0, 6);
-          this.updateLocalStorage();
         }
+        this.coinsData = resp.data.slice(0, 6);
+        this.updateLocalStorage();
         this.loading = false;
       },
       error: (error) => {
@@ -66,11 +65,9 @@ export class DashboardComponent implements OnInit {
   listenToWebSocket() {
     this.webSocketService.getWebSocket().subscribe((data: AssetPrice) => {
       Object.keys(data).forEach((coinName) => {
-        const coinIndex = this.coinsData.findIndex(
-          (coin) => coin.id === coinName
-        );
-        if (coinIndex !== -1) {
-          this.coinsData[coinIndex].priceUsd = data[coinName];
+        const coin = this.coinsData.find((coin) => coin.id === coinName);
+        if (coin) {
+          coin.priceUsd = data[coinName];
         }
       });
       this.changeDetectorRef.detectChanges();
@@ -84,16 +81,14 @@ export class DashboardComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        if (!this.coinExist(result)) {
-          this.coinsData.push(result);
-          this.updateLocalStorage();
-        } else {
-          this.toastr.error(
-            "The coin exists already!  Please select another one.",
-            "Error"
-          );
-        }
+      if (result && !this.coinExist(result)) {
+        this.coinsData.push(result);
+        this.updateLocalStorage();
+      } else if (result) {
+        this.toastr.error(
+          "The coin exists already! Please select another one.",
+          "Error"
+        );
       }
     });
   }
@@ -103,11 +98,10 @@ export class DashboardComponent implements OnInit {
     this.updateLocalStorage();
   }
   coinExist(coin: Asset) {
-    for (var i = 0; i < this.coinsData.length; i++) {
-      if (JSON.stringify(this.coinsData[i]) === JSON.stringify(coin)) {
-        return true;
-      }
-    }
-    return false;
+    return this.coinsData.some((c) => c.id === coin.id);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 }

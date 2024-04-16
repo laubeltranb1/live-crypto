@@ -12,6 +12,6 @@ export const APP_ROUTES: Routes = [
     path: CONSTANTS_URIS.Dashboard,
     component: DashboardComponent,
   },
-  { path: "error", component: ErrorComponent },
+  { path: CONSTANTS_URIS.Error, component: ErrorComponent },
   { path: "**", redirectTo: CONSTANTS_URIS.Dashboard, pathMatch: "full" },
 ];
